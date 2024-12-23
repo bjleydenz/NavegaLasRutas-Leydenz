@@ -1,0 +1,20 @@
+.item-count {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  button {
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+  
+  span {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  p {
+    margin-top: 10px;
+  }
+  

@@ -1,9 +1,8 @@
-// src/components/ItemDetailContainer.jsx
-
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './ItemDetailContainer.css';
-import products from '../data/products'; // Importa los productos
+import products from '../data/products';
+import ItemCount from './ItemCount';
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
@@ -11,12 +10,11 @@ const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulación de llamada a API
     const fetchItem = new Promise((resolve) => {
       setTimeout(() => {
         const foundItem = products.find((product) => product.id === parseInt(id, 10));
         resolve(foundItem);
-      }, 2100); // 2 segundos de retardo
+      }, 2100);
     });
 
     fetchItem
@@ -36,6 +34,7 @@ const ItemDetailContainer = () => {
           <h2>{item.name}</h2>
           <p>{item.description}</p>
           <p>Precio: ${item.price}</p>
+          <ItemCount stock={item.stock} />
         </>
       ) : (
         <p>Producto no encontrado</p>

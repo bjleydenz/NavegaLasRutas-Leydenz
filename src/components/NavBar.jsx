@@ -8,7 +8,6 @@ const NavBar = () => {
     <nav>
       <img src={logo} alt="My Plants Logo" style={{ minWidth: 200, maxWidth: 200 }} />
       <div className="nav-links">
-        {/* Enlaces dinámicos con React Router */}
         <Link to="/">Inicio</Link>
         <Link to="/productos">Productos</Link>
         <Link to="/contacto">Contacto</Link>
