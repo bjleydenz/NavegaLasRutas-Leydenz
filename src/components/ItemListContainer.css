@@ -1,0 +1,17 @@
+.item-list-container {
+  padding: 40px 20px;
+  background-color: rgb(144, 238, 144); 
+  text-align: center;
+}
+
+.item-list-container h2 {
+  font-size: 2rem;
+  color: rgb(0, 128, 0); 
+  margin-bottom: 20px;
+}
+
+.item-list-container p {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6;
+}
