@@ -1,6 +1,25 @@
+import { useCart } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
+
 const CartWidget = () => {
+  const { getTotalQuantity } = useCart();
+  const totalItems = getTotalQuantity();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/carrito");
+  };
+
+  if (totalItems === 0) return null;
+
   return (
-    <button>🛒 Carrito (0)</button>
+    <button 
+      onClick={handleClick} 
+      className="cart-widget-button" 
+      aria-label={`Ver carrito con ${totalItems} productos`}
+    >
+      🛒 Carrito ({totalItems})
+    </button>
   );
 };
 

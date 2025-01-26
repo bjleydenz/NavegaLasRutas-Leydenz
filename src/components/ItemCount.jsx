@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { useCart } from '../context/CartContext';
+
 // eslint-disable-next-line react/prop-types
-const ItemCount = ({ stock }) => {
+const ItemCount = ({ stock, product }) => {
   const [quantity, setQuantity] = useState(1);
+  const { addItemToCart } = useCart();
 
   const handleIncrement = () => {
     if (quantity < stock) {
@@ -15,13 +18,20 @@ const ItemCount = ({ stock }) => {
     }
   };
 
+  const handleAddToCart = () => {
+    addItemToCart(product, quantity);
+  };
+
   return (
     <div className="item-count">
-      <button onClick={handleDecrement}>-</button>
+      <button onClick={handleDecrement} disabled={quantity <= 1}>-</button>
       <span>{quantity}</span>
-      <button onClick={handleIncrement}>+</button>
+      <button onClick={handleIncrement} disabled={quantity >= stock}>+</button>
       <p>Stock disponible: {stock}</p>
-      <button disabled={stock <= 0}>Añadir al carrito</button>
+      {quantity > stock && <p style={{ color: 'red' }}>No puedes añadir más de {stock} unidades.</p>}
+      <button onClick={handleAddToCart} disabled={stock <= 0 || quantity > stock}>
+        Añadir al carrito
+      </button>
     </div>
   );
 };
