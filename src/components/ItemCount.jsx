@@ -37,3 +37,4 @@ const ItemCount = ({ stock, product }) => {
 };
 
 export default ItemCount;
+
