@@ -1,4 +1,5 @@
 import { useCart } from '../context/CartContext';
+import { Link } from 'react-router-dom';
 import './Cart.css';
 
 const Cart = () => {
@@ -8,6 +9,7 @@ const Cart = () => {
     return (
       <div className="cart-empty">
         <h2>Tu carrito está vacío</h2>
+        <Link to="/productos" className="view-products-link">Ver productos</Link>
       </div>
     );
   }
@@ -18,13 +20,23 @@ const Cart = () => {
       <div className="cart-items">
         {cart.map((item) => (
           <div key={item.id} className="cart-item">
-            <img src={item.image || "default-image.jpg"} alt={item.name} style={{ width: 100 }} />
+            <img
+              src={item.image || "default-image.jpg"}
+              alt={item.name}
+              className="cart-item-image"
+            />
             <div className="item-details">
               <h3>{item.name}</h3>
               <p>Precio: ${item.price}</p>
               <p>Cantidad: {item.quantity}</p>
               <p>Total: ${item.price * item.quantity}</p>
-              <button onClick={() => removeItemFromCart(item.id)}>Eliminar</button>
+              <button
+                onClick={() => removeItemFromCart(item.id)}
+                className="remove-item"
+                aria-label={`Eliminar ${item.name} del carrito`}
+              >
+                Eliminar
+              </button>
             </div>
           </div>
         ))}
@@ -32,10 +44,16 @@ const Cart = () => {
       <div className="cart-summary">
         <p>Total de productos: {getTotalQuantity()}</p>
         <p>Total: ${getTotalPrice()}</p>
-        <button onClick={clearCart} className="clear-cart">
+        <button
+          onClick={clearCart}
+          className="clear-cart"
+          aria-label="Vaciar el carrito de compras"
+        >
           Vaciar carrito
         </button>
-        <button className="checkout">Realizar compra</button>
+        <button className="checkout" aria-label="Ir a la página de pago">
+          Realizar compra
+        </button>
       </div>
     </div>
   );

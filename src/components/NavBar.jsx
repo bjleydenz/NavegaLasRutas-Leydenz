@@ -6,12 +6,7 @@ import logo from '../assets/logomyplants2.jpg';
 const NavBar = () => {
   return (
     <nav className="navbar">
-      <img
-        src={logo}
-        alt="My Plants Logo"
-        className="navbar-logo"
-        style={{ minWidth: 200, maxWidth: 200 }}
-      />
+      <img src={logo} alt="Logo de My Plants" className="navbar-logo" />
       <div className="nav-links">
         <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>
           Inicio
